@@ -42,6 +42,8 @@ module Twinfield
               <debitcredit>#{line[:debitcredit]}</debitcredit>
               <description>#{CGI.escapeHTML(line[:description]) if line[:description]}</description>
               #{ "<vatcode>#{line[:vatcode]}</vatcode>" if line[:vatcode] }
+              #{ "<performancetype>#{line[:performancetype]}</performancetype>" if line[:performancetype] }
+              #{ "<performancedate>#{line[:performancedate].strftime("%Y%m%d")}</performancedate>" if line[:performancedate] }
             </line>
           )
         end

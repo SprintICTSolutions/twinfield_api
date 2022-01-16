@@ -21,9 +21,12 @@ module Twinfield
 
     def request(type, options={})
       header = {
-        "Header" => { "SessionID" => session.session_id },
+        "Header" => {
+          "AccessToken" => session.access_token,
+          "CompanyCode" => session.company # ?
+        },
         "attributes!" => { "Header" => { "xmlns" => "http://www.twinfield.com/" } }
-      } 
+      }
 
       message = {
         "type" => type,

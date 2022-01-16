@@ -22,7 +22,13 @@ module Twinfield
     def request(action=:process_xml_string, options={}, &block)
 
       if actions.include?(action)
-        header = { "Header" => { "SessionID" => session.session_id }, attributes!: { "Header" => { "xmlns" => "http://www.twinfield.com/"} } }
+        header = {
+          "Header" => {
+            "AccessToken" => session.access_token,
+            "CompanyCode" => session.company
+          },
+          "attributes!" => { "Header" => { "xmlns" => "http://www.twinfield.com/" } }
+        }
         message = "<xmlRequest><![CDATA[#{block.call}]]></xmlRequest>"
         
         client.call(action, attributes: { xmlns: "http://www.twinfield.com/" }, soap_header: header, message: message)

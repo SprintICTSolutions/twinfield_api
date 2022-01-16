@@ -1,20 +1,10 @@
 module Twinfield
-
-  # Used for configuration of the Twinfield gem.
-
   class Configuration
-
     attr_accessor :username
     attr_accessor :password
     attr_accessor :organisation
     attr_accessor :company
-
-    def to_logon_hash
-      {
-        "user" => @username,
-        "password" => @password,
-        "organisation" => @organisation
-      }
-    end
+    attr_accessor :access_token
+    attr_accessor :cluster
   end
 end
